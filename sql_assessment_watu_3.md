@@ -71,6 +71,16 @@ SELECT client_id, first_name, middle_name, last_name, date_of_birth, age
 FROM client_age
 WHERE LOWER(first_name) = 'paul' AND  age_2 > 25  or LOWER(middle_name) = 'paul' AND  age_2 > 25     
 ```
+Results:
+
+|client_id |first_name    |middle_name   |last_name   |date_of_birth    |age                    |
+|----------|--------------|--------------|------------|-----------------|-----------------------|
+|43        |Johny         |Paul          |Orengo      |1971-07-29       |50 years 2 mons 10 days|
+|35        |Paul          |NULL          |Pogba       |1993-03-15       |28 years 6 mons 24 days|
+
+Explanation:
+
+Only two clients will meet the criteria of having either first name or last name be paul while they are 25 years and above.
     
 3. -- Add a column to the table from question (1) that contains the number of loans each customer made.
    -- If there is no loan, this column should show 0.
