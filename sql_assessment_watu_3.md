@@ -1,5 +1,7 @@
 --------------------------------------------------------------------------------
--- TABLES STRUCTURE
+
+# **TABLES STRUCTURE**
+
 --------------------------------------------------------------------------------
 
 NOTE: these are just extracts from bigger tables, to show their structure
@@ -84,6 +86,41 @@ Only two clients will meet the criteria of having either first name or last name
     
 3. -- Add a column to the table from question (1) that contains the number of loans each customer made.
    -- If there is no loan, this column should show 0.
+
+Note:
+The question was not clear and had two interpretations which are:
+    1. Add the column to the table created with the condition applied.
+    2. Add the column to the table created without the condition.
+The two implementations are provided below:-
+
+1. Table with Condition Apply
+```sql
+WITH client_age AS 
+(
+    SELECT client_id, first_name, middle_name, last_name, date_of_birth, age(CURRENT_DATE, date_of_birth) AS age, 
+        EXTRACT(year FROM age(CURRENT_DATE, date_of_birth)) as age_2 
+    FROM client
+    ORDER BY age DESC
+)
+SELECT client_age.client_id, client_age.first_name, client_age.middle_name, client_age.last_name, client_age.date_of_birth, client_age.age, COALESCE(loan.principal_amount, 0) as new_principal_amount
+FROM client_age 
+LEFT JOIN public.loan as loan on client_age.client_id = loan.client_id
+WHERE LOWER(client_age.first_name) = 'paul' AND  client_age.age_2 > 25  or LOWER(client_age.middle_name) = 'paul' AND  client_age.age_2 > 25;
+```
+
+2. Table without condition applied
+```sql
+WITH client_age AS 
+(
+    SELECT client_id, first_name, middle_name, last_name, date_of_birth, age(CURRENT_DATE, date_of_birth) AS age, 
+        EXTRACT(year FROM age(CURRENT_DATE, date_of_birth)) as age_2 
+    FROM client
+    ORDER BY age DESC
+)
+SELECT client_age.client_id, client_age.first_name, client_age.middle_name, client_age.last_name, client_age.date_of_birth, client_age.age, COALESCE(loan.principal_amount, 0) as new_principal_amount
+FROM client_age 
+LEFT JOIN public.loan as loan on client_age.client_id = loan.client_id;
+```
 
 4. -- Select the 100cc, 125cc and 150cc bikes from the vehicle table.
    -- Add an engine_size column to the output (that contains the engine size).
