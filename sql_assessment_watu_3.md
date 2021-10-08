@@ -84,7 +84,7 @@ Explanation:
 
 Only two clients will meet the criteria of having either first name or last name be paul while they are 25 years and above.
     
-3. -- Add a column to the table from question (1) that contains the number of loans each customer made.
+2. -- Add a column to the table from question (1) that contains the number of loans each customer made.
    -- If there is no loan, this column should show 0.
 
 Note:
@@ -93,7 +93,7 @@ The question was not clear and had two interpretations which are:
     2. Add the column to the table created without the condition.
 The two implementations are provided below:-
 
-1. Table with Condition Apply
+Table with Condition Apply
 ```sql
 WITH client_age AS 
 (
@@ -115,7 +115,7 @@ Output:
 | 35        | Paul       | NULL        | Pogba     | 1993-03-15    | 28 years 6 mons 24 days | 0                    |
 
 
-2. Table without condition applied
+Table without condition applied
 ```sql
 WITH client_age AS 
 (
@@ -144,7 +144,7 @@ Output:
 | 43        | Johny      | Paul        | Orengo    | 1971-07-29    | 50 years 2 mons 10 days | 0                    |
 | 35        | Paul       | NULL        | Pogba     | 1993-03-15    | 28 years 6 mons 24 days | 0                    |
 
-4. -- Select the 100cc, 125cc and 150cc bikes from the vehicle table.
+3. -- Select the 100cc, 125cc and 150cc bikes from the vehicle table.
    -- Add an engine_size column to the output (that contains the engine size).
 
 ```sql
@@ -171,8 +171,20 @@ Output:
 | 34         | Boxer   | BM 150cc-2      | 150CC  |
 | 35         | Boxer   | BM 150cc-3      | 150CC  |
 
-6. -- Calculate the total principal_amount per client full name (one column that includes all the names for each client) and per vehicle make.
+4. -- Calculate the total principal_amount per client full name (one column that includes all the names for each client) and per vehicle make.
 
-7. -- Select the loan table and add an extra column that shows the chronological loan order for each client based on the submitted_on_date column: 
+```sql
+SELECT 
+    CONCAT(first_name, ' ',  middle_name, ' ', last_name) as full_name, vehicle.make as make, loan.principal_amount
+FROM client
+LEFT JOIN loan ON client.client_id = loan.client_id
+LEFT JOIN vehicle on loan.vehicle_id = vehicle.vehicle_id
+```
+
+Output:
+
+
+
+6. -- Select the loan table and add an extra column that shows the chronological loan order for each client based on the submitted_on_date column: 
    -- 1 if it's the client's first sale, 2 if it's the client's second sale etc.
    -- Call it loan_order
