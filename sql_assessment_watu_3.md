@@ -183,8 +183,31 @@ LEFT JOIN vehicle on loan.vehicle_id = vehicle.vehicle_id
 
 Output:
 
-
+| full_name               | make | principal_amount |
+|-------------------------|------|------------------|
+| Prudence Salim Okeyo    | NULL | NULL             |
+| Susan Mapenzi Marigu    | NULL | NULL             |
+| Rosemary Pauline Kinyua | NULL | NULL             |
+| Everlyne  Maten'ge      | NULL | NULL             |
+| Barack  Obama           | NULL | NULL             |
+| Elizabeth  Mbaji        | NULL | NULL             |
+| Hafsa Wangui Munga      | NULL | NULL             |
+| Merceline Lucy Njenga   | NULL | NULL             |
+| Johny Paul Orengo       | NULL | NULL             |
+| Paul  Pogba             | NULL | NULL             |
 
 6. -- Select the loan table and add an extra column that shows the chronological loan order for each client based on the submitted_on_date column: 
    -- 1 if it's the client's first sale, 2 if it's the client's second sale etc.
    -- Call it loan_order
+
+```sql
+WITH client AS 
+(
+    SELECT loan_id, client_id, vehicle_id, principal_amount, submitted_on_date
+    FROM    loan
+    ORDER BY client_id, submitted_on_date
+)
+SELECT loan_id, client_id, vehicle_id, principal_amount, submitted_on_date, ROW_NUMBER () OVER (partition BY client_id) as loan_order
+FROM client
+```
+
