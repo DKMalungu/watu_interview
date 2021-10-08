@@ -156,6 +156,20 @@ CASE
 END AS rating
 FROM public.vehicle
 ```
+Output:
+
+| vehicle_id | make    | model_name      | rating |
+|------------|---------|-----------------|--------|
+| 24         | Haojin  | HJ 150CC-11A    | 150CC  |
+| 26         | Honda   | Ace CB 125CC ES | 125CC  |
+| 27         | TVS     | HLX 125CC ES    | 125CC  |
+| 29         | TVS     | HLX 150CC X     | 150CC  |
+| 30         | TVS     | HLX 100CC KS    | 100CC  |
+| 31         | Haojin  | HJ 125CC-A      | 125CC  |
+| 32         | Boxer   | BM 150CC (4)    | 150CC  |
+| 33         | Ferrari | Enzo 6000CC     | NULL   |
+| 34         | Boxer   | BM 150cc-2      | 150CC  |
+| 35         | Boxer   | BM 150cc-3      | 150CC  |
 
 6. -- Calculate the total principal_amount per client full name (one column that includes all the names for each client) and per vehicle make.
 
