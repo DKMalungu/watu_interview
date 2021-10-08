@@ -147,8 +147,18 @@ Output:
 4. -- Select the 100cc, 125cc and 150cc bikes from the vehicle table.
    -- Add an engine_size column to the output (that contains the engine size).
 
-5. -- Calculate the total principal_amount per client full name (one column that includes all the names for each client) and per vehicle make.
+```sql
+SELECT vehicle_id, make, model_name,
+CASE 
+    WHEN LOWER(model_name) LIKE '%100cc%' THEN '100CC'
+    WHEN LOWER(model_name) LIKE '%125cc%' THEN '125CC'
+    WHEN LOWER(model_name) LIKE '%150cc%' THEN '150CC'
+END AS rating
+FROM public.vehicle
+```
 
-6. -- Select the loan table and add an extra column that shows the chronological loan order for each client based on the submitted_on_date column: 
+6. -- Calculate the total principal_amount per client full name (one column that includes all the names for each client) and per vehicle make.
+
+7. -- Select the loan table and add an extra column that shows the chronological loan order for each client based on the submitted_on_date column: 
    -- 1 if it's the client's first sale, 2 if it's the client's second sale etc.
    -- Call it loan_order
