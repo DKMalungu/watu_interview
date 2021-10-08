@@ -1,0 +1,246 @@
+<html>
+<head>
+<title>sql_assessment_watu_solutions.md</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #808080;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #cc7832;}
+.s3 { color: #a9b7c6;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+sql_assessment_watu_solutions.md</font>
+</center></td></tr></table>
+<pre><span class="s0">--------------------------------------------------------------------------------</span>
+
+<span class="s2"># </span><span class="s1">**</span><span class="s3">TABLES STRUCTURE</span><span class="s1">**</span>
+
+<span class="s0">--------------------------------------------------------------------------------</span>
+
+<span class="s3">NOTE</span><span class="s1">: </span><span class="s3">these are just extracts from bigger tables, to show their structure</span>
+
+  <span class="s2"># </span><span class="s3">table name</span><span class="s1">: </span><span class="s3">client </span>
+
+
+<span class="s0">|</span><span class="s1">client_id</span><span class="s0">|</span><span class="s1">first_name</span><span class="s0">|</span><span class="s1">middle_name</span><span class="s0">|</span><span class="s1">last_name</span><span class="s0">|</span><span class="s1">date_of_birth</span><span class="s0">|</span>
+<span class="s0">|---------|----------|-----------|---------|-------------|</span>
+<span class="s0">|</span><span class="s1">33       </span><span class="s0">|</span><span class="s1">Susan     </span><span class="s0">|</span><span class="s1">Mapenzi    </span><span class="s0">|</span><span class="s1">Marigu   </span><span class="s0">|</span><span class="s1">1974-06-11   </span><span class="s0">|</span>
+<span class="s0">|</span><span class="s1">35       </span><span class="s0">|</span><span class="s1">Paul      </span><span class="s0">|           |</span><span class="s1">Pogba    </span><span class="s0">|</span><span class="s1">1993-03-15   </span><span class="s0">|</span>
+<span class="s0">|</span><span class="s1">36       </span><span class="s0">|</span><span class="s1">Hafsa     </span><span class="s0">|</span><span class="s1">Wangui     </span><span class="s0">|</span><span class="s1">Munga    </span><span class="s0">|</span><span class="s1">1987-05-07   </span><span class="s0">|</span>
+<span class="s0">|</span><span class="s1">37       </span><span class="s0">|</span><span class="s1">Everlyne  </span><span class="s0">|           |</span><span class="s1">Maten'ge </span><span class="s0">|</span><span class="s1">1973-02-27   </span><span class="s0">|</span>
+<span class="s0">|</span><span class="s1">38       </span><span class="s0">|</span><span class="s1">Barack    </span><span class="s0">|           |</span><span class="s1">Obama    </span><span class="s0">|</span><span class="s1">1961-08-04   </span><span class="s0">|</span>
+<span class="s0">|</span><span class="s1">39       </span><span class="s0">|</span><span class="s1">Prudence  </span><span class="s0">|</span><span class="s1">Salim      </span><span class="s0">|</span><span class="s1">Okeyo    </span><span class="s0">|</span><span class="s1">1985-02-16   </span><span class="s0">|</span>
+<span class="s0">|</span><span class="s1">40       </span><span class="s0">|</span><span class="s1">Rosemary  </span><span class="s0">|</span><span class="s1">Pauline    </span><span class="s0">|</span><span class="s1">Kinyua   </span><span class="s0">|</span><span class="s1">1977-01-27   </span><span class="s0">|</span>
+<span class="s0">|</span><span class="s1">42       </span><span class="s0">|</span><span class="s1">Elizabeth </span><span class="s0">|           |</span><span class="s1">Mbaji    </span><span class="s0">|</span><span class="s1">1975-10-03   </span><span class="s0">|</span>
+<span class="s0">|</span><span class="s1">43       </span><span class="s0">|</span><span class="s1">Johny     </span><span class="s0">|</span><span class="s1">Paul       </span><span class="s0">|</span><span class="s1">Orengo   </span><span class="s0">|</span><span class="s1">1971-07-29   </span><span class="s0">|</span>
+<span class="s0">|</span><span class="s1">44       </span><span class="s0">|</span><span class="s1">Merceline </span><span class="s0">|</span><span class="s1">Lucy       </span><span class="s0">|</span><span class="s1">Njenga   </span><span class="s0">|</span><span class="s1">1982-04-21   </span><span class="s0">|</span>
+
+  <span class="s2"># </span><span class="s3">table name</span><span class="s1">: </span><span class="s3">loan</span>
+  
+<span class="s0">|</span><span class="s1">loan_id</span><span class="s0">|</span><span class="s1">client_id</span><span class="s0">|</span><span class="s1">vehicle_id</span><span class="s0">|</span><span class="s1">principal_amount</span><span class="s0">|</span><span class="s1">submitted_on_date</span><span class="s0">|</span>
+<span class="s0">|-------|---------|----------|----------------|-----------------|</span>
+<span class="s0">|</span><span class="s1">75676  </span><span class="s0">|</span><span class="s1">40784    </span><span class="s0">|</span><span class="s1">24        </span><span class="s0">|</span><span class="s1">106500          </span><span class="s0">|</span><span class="s1">2019-05-02       </span><span class="s0">|</span>
+<span class="s0">|</span><span class="s1">75659  </span><span class="s0">|</span><span class="s1">40760    </span><span class="s0">|</span><span class="s1">26        </span><span class="s0">|</span><span class="s1">108400          </span><span class="s0">|</span><span class="s1">2020-12-05       </span><span class="s0">|</span>
+<span class="s0">|</span><span class="s1">75685  </span><span class="s0">|</span><span class="s1">40807    </span><span class="s0">|</span><span class="s1">27        </span><span class="s0">|</span><span class="s1">101500          </span><span class="s0">|</span><span class="s1">2019-05-02       </span><span class="s0">|</span>
+<span class="s0">|</span><span class="s1">75657  </span><span class="s0">|</span><span class="s1">40796    </span><span class="s0">|</span><span class="s1">28        </span><span class="s0">|</span><span class="s1">271482          </span><span class="s0">|</span><span class="s1">2019-06-21       </span><span class="s0">|</span>
+<span class="s0">|</span><span class="s1">75662  </span><span class="s0">|</span><span class="s1">40803    </span><span class="s0">|</span><span class="s1">29        </span><span class="s0">|</span><span class="s1">114400          </span><span class="s0">|</span><span class="s1">2019-05-02       </span><span class="s0">|</span>
+<span class="s0">|</span><span class="s1">75660  </span><span class="s0">|</span><span class="s1">40737    </span><span class="s0">|</span><span class="s1">30        </span><span class="s0">|</span><span class="s1">95300           </span><span class="s0">|</span><span class="s1">2019-05-02       </span><span class="s0">|</span>
+<span class="s0">|</span><span class="s1">75656  </span><span class="s0">|</span><span class="s1">40815    </span><span class="s0">|</span><span class="s1">31        </span><span class="s0">|</span><span class="s1">78500           </span><span class="s0">|</span><span class="s1">2019-05-02       </span><span class="s0">|</span>
+<span class="s0">|</span><span class="s1">75666  </span><span class="s0">|</span><span class="s1">40834    </span><span class="s0">|</span><span class="s1">32        </span><span class="s0">|</span><span class="s1">111800          </span><span class="s0">|</span><span class="s1">2019-05-02       </span><span class="s0">|</span>
+<span class="s0">|</span><span class="s1">75658  </span><span class="s0">|</span><span class="s1">40811    </span><span class="s0">|</span><span class="s1">33        </span><span class="s0">|</span><span class="s1">107050          </span><span class="s0">|</span><span class="s1">2019-05-02       </span><span class="s0">|</span>
+<span class="s0">|</span><span class="s1">75663  </span><span class="s0">|</span><span class="s1">40840    </span><span class="s0">|</span><span class="s1">34        </span><span class="s0">|</span><span class="s1">101800          </span><span class="s0">|</span><span class="s1">2019-05-02       </span><span class="s0">|</span>
+
+  <span class="s2"># </span><span class="s3">table name</span><span class="s1">: </span><span class="s3">vehicle</span>
+ 
+<span class="s0">|</span><span class="s1">vehicle_id</span><span class="s0">|</span><span class="s1">make    </span><span class="s0">|</span><span class="s1">model_name      </span><span class="s0">|</span>
+<span class="s0">|----------|--------|----------------|</span>
+<span class="s0">|</span><span class="s1">24        </span><span class="s0">|</span><span class="s1">Haojin  </span><span class="s0">|</span><span class="s1">HJ 150CC-11A    </span><span class="s0">|</span>
+<span class="s0">|</span><span class="s1">26        </span><span class="s0">|</span><span class="s1">Honda   </span><span class="s0">|</span><span class="s1">Ace CB 125CC ES </span><span class="s0">|</span>
+<span class="s0">|</span><span class="s1">27        </span><span class="s0">|</span><span class="s1">TVS     </span><span class="s0">|</span><span class="s1">HLX 125CC ES    </span><span class="s0">|</span>
+<span class="s0">|</span><span class="s1">29        </span><span class="s0">|</span><span class="s1">TVS     </span><span class="s0">|</span><span class="s1">HLX 150CC X     </span><span class="s0">|</span>
+<span class="s0">|</span><span class="s1">30        </span><span class="s0">|</span><span class="s1">TVS     </span><span class="s0">|</span><span class="s1">HLX 100CC KS    </span><span class="s0">|</span>
+<span class="s0">|</span><span class="s1">31        </span><span class="s0">|</span><span class="s1">Haojin  </span><span class="s0">|</span><span class="s1">HJ 125CC-A      </span><span class="s0">|</span>
+<span class="s0">|</span><span class="s1">32        </span><span class="s0">|</span><span class="s1">Boxer   </span><span class="s0">|</span><span class="s1">BM 150CC (4)    </span><span class="s0">|   </span>
+<span class="s0">|</span><span class="s1">33        </span><span class="s0">|</span><span class="s1">Ferrari </span><span class="s0">|</span><span class="s1">Enzo 6000CC     </span><span class="s0">|</span>
+<span class="s0">|</span><span class="s1">34        </span><span class="s0">|</span><span class="s1">Boxer   </span><span class="s0">|</span><span class="s1">BM 150cc-2      </span><span class="s0">|</span>
+<span class="s0">|</span><span class="s1">35        </span><span class="s0">|</span><span class="s1">Boxer   </span><span class="s0">|</span><span class="s1">BM 150cc-3      </span><span class="s0">|</span>
+
+<span class="s0">--------------------------------------------------------------------------------</span>
+<span class="s3">-- QUESTIONS</span>
+<span class="s2">--------------------------------------------------------------------------------</span>
+
+<span class="s3">Using the tables above, please write the SQL code that would answer each of the following questions </span><span class="s1">(</span><span class="s3">write the code below each of them</span><span class="s1">)</span><span class="s3">.</span>
+
+<span class="s2">1. </span><span class="s3">-- Select all the clients called Paul in first_name or middle_name and who are more than 25 years old.</span>
+   <span class="s3">-- In the results, create a column with the client's age in years. </span>
+   <span class="s3">-- Order them from older to younger.</span>
+<span class="s0">```sql</span>
+<span class="s0">WITH client_age AS </span>
+<span class="s0">(</span>
+    <span class="s0">SELECT client_id, first_name, middle_name, last_name, date_of_birth, age(CURRENT_DATE, date_of_birth) AS age, </span>
+        <span class="s0">EXTRACT(year FROM age(CURRENT_DATE, date_of_birth)) as age_2 </span>
+    <span class="s0">FROM client </span>
+    <span class="s0">ORDER BY age DESC</span>
+<span class="s0">)</span>
+<span class="s0">SELECT client_id, first_name, middle_name, last_name, date_of_birth, age </span>
+<span class="s0">FROM client_age</span>
+<span class="s0">WHERE LOWER(first_name) = 'paul' AND  age_2 &gt; 25  or LOWER(middle_name) = 'paul' AND  age_2 &gt; 25     </span>
+<span class="s0">```</span>
+<span class="s3">Results</span><span class="s1">:</span>
+
+<span class="s0">|</span><span class="s1">client_id </span><span class="s0">|</span><span class="s1">first_name    </span><span class="s0">|</span><span class="s1">middle_name   </span><span class="s0">|</span><span class="s1">last_name   </span><span class="s0">|</span><span class="s1">date_of_birth    </span><span class="s0">|</span><span class="s1">age                    </span><span class="s0">|</span>
+<span class="s0">|----------|--------------|--------------|------------|-----------------|-----------------------|</span>
+<span class="s0">|</span><span class="s1">43        </span><span class="s0">|</span><span class="s1">Johny         </span><span class="s0">|</span><span class="s1">Paul          </span><span class="s0">|</span><span class="s1">Orengo      </span><span class="s0">|</span><span class="s1">1971-07-29       </span><span class="s0">|</span><span class="s1">50 years 2 mons 10 days</span><span class="s0">|</span>
+<span class="s0">|</span><span class="s1">35        </span><span class="s0">|</span><span class="s1">Paul          </span><span class="s0">|</span><span class="s1">NULL          </span><span class="s0">|</span><span class="s1">Pogba       </span><span class="s0">|</span><span class="s1">1993-03-15       </span><span class="s0">|</span><span class="s1">28 years 6 mons 24 days</span><span class="s0">|</span>
+
+<span class="s3">Explanation</span><span class="s1">:</span>
+
+<span class="s3">Only two clients will meet the criteria of having either first name or last name be paul while they are 25 years and above.</span>
+    
+<span class="s2">2. </span><span class="s3">-- Add a column to the table from question </span><span class="s1">(</span><span class="s3">1</span><span class="s1">) </span><span class="s3">that contains the number of loans each customer made.</span>
+   <span class="s3">-- If there is no loan, this column should show 0.</span>
+
+<span class="s3">Note</span><span class="s1">:</span>
+<span class="s3">The question was not clear and had two interpretations which are</span><span class="s1">:</span>
+    <span class="s3">1. Add the column to the table created with the condition applied.</span>
+    <span class="s3">2. Add the column to the table created without the condition.</span>
+<span class="s3">The two implementations are provided below</span><span class="s1">:</span><span class="s3">-</span>
+
+<span class="s3">Table with Condition Apply</span>
+<span class="s0">```sql</span>
+<span class="s0">WITH client_age AS </span>
+<span class="s0">(</span>
+    <span class="s0">SELECT client_id, first_name, middle_name, last_name, date_of_birth, age(CURRENT_DATE, date_of_birth) AS age, </span>
+        <span class="s0">EXTRACT(year FROM age(CURRENT_DATE, date_of_birth)) as age_2 </span>
+    <span class="s0">FROM client</span>
+    <span class="s0">ORDER BY age DESC</span>
+<span class="s0">)</span>
+<span class="s0">SELECT client_age.client_id, client_age.first_name, client_age.middle_name, client_age.last_name, client_age.date_of_birth, client_age.age, COALESCE(loan.principal_amount, 0) as new_principal_amount</span>
+<span class="s0">FROM client_age </span>
+<span class="s0">LEFT JOIN public.loan as loan on client_age.client_id = loan.client_id</span>
+<span class="s0">WHERE LOWER(client_age.first_name) = 'paul' AND  client_age.age_2 &gt; 25  or LOWER(client_age.middle_name) = 'paul' AND  client_age.age_2 &gt; 25;</span>
+<span class="s0">```</span>
+<span class="s3">Output</span><span class="s1">:</span>
+
+<span class="s0">| </span><span class="s1">client_id </span><span class="s0">| </span><span class="s1">first_name </span><span class="s0">| </span><span class="s1">middle_name </span><span class="s0">| </span><span class="s1">last_name </span><span class="s0">| </span><span class="s1">date_of_birth </span><span class="s0">| </span><span class="s1">age                     </span><span class="s0">| </span><span class="s1">new_principal_amount </span><span class="s0">|</span>
+<span class="s0">|-----------|------------|-------------|-----------|---------------|-------------------------|----------------------|</span>
+<span class="s0">| </span><span class="s1">43        </span><span class="s0">| </span><span class="s1">Johny      </span><span class="s0">| </span><span class="s1">Paul        </span><span class="s0">| </span><span class="s1">Orengo    </span><span class="s0">| </span><span class="s1">1971-07-29    </span><span class="s0">| </span><span class="s1">50 years 2 mons 10 days </span><span class="s0">| </span><span class="s1">0                    </span><span class="s0">|</span>
+<span class="s0">| </span><span class="s1">35        </span><span class="s0">| </span><span class="s1">Paul       </span><span class="s0">| </span><span class="s1">NULL        </span><span class="s0">| </span><span class="s1">Pogba     </span><span class="s0">| </span><span class="s1">1993-03-15    </span><span class="s0">| </span><span class="s1">28 years 6 mons 24 days </span><span class="s0">| </span><span class="s1">0                    </span><span class="s0">|</span>
+
+
+<span class="s3">Table without condition applied</span>
+<span class="s0">```sql</span>
+<span class="s0">WITH client_age AS </span>
+<span class="s0">(</span>
+    <span class="s0">SELECT client_id, first_name, middle_name, last_name, date_of_birth, age(CURRENT_DATE, date_of_birth) AS age, </span>
+        <span class="s0">EXTRACT(year FROM age(CURRENT_DATE, date_of_birth)) as age_2 </span>
+    <span class="s0">FROM client</span>
+    <span class="s0">ORDER BY age DESC</span>
+<span class="s0">)</span>
+<span class="s0">SELECT client_age.client_id, client_age.first_name, client_age.middle_name, client_age.last_name, client_age.date_of_birth, client_age.age, COALESCE(loan.principal_amount, 0) as new_principal_amount</span>
+<span class="s0">FROM client_age </span>
+<span class="s0">LEFT JOIN public.loan as loan on client_age.client_id = loan.client_id;</span>
+<span class="s0">```</span>
+
+<span class="s3">Output</span><span class="s1">:</span>
+
+<span class="s0">| </span><span class="s1">client_id </span><span class="s0">| </span><span class="s1">first_name </span><span class="s0">| </span><span class="s1">middle_name </span><span class="s0">| </span><span class="s1">last_name </span><span class="s0">| </span><span class="s1">date_of_birth </span><span class="s0">| </span><span class="s1">age                     </span><span class="s0">| </span><span class="s1">new_principal_amount </span><span class="s0">|</span>
+<span class="s0">|-----------|------------|-------------|-----------|---------------|-------------------------|----------------------|</span>
+<span class="s0">| </span><span class="s1">39        </span><span class="s0">| </span><span class="s1">Prudence   </span><span class="s0">| </span><span class="s1">Salim       </span><span class="s0">| </span><span class="s1">Okeyo     </span><span class="s0">| </span><span class="s1">1985-02-16    </span><span class="s0">| </span><span class="s1">36 years 7 mons 20 days </span><span class="s0">| </span><span class="s1">0                    </span><span class="s0">|</span>
+<span class="s0">| </span><span class="s1">33        </span><span class="s0">| </span><span class="s1">Susan      </span><span class="s0">| </span><span class="s1">Mapenzi     </span><span class="s0">| </span><span class="s1">Marigu    </span><span class="s0">| </span><span class="s1">1974-06-11    </span><span class="s0">| </span><span class="s1">47 years 3 mons 27 days </span><span class="s0">| </span><span class="s1">0                    </span><span class="s0">|</span>
+<span class="s0">| </span><span class="s1">40        </span><span class="s0">| </span><span class="s1">Rosemary   </span><span class="s0">| </span><span class="s1">Pauline     </span><span class="s0">| </span><span class="s1">Kinyua    </span><span class="s0">| </span><span class="s1">1977-01-27    </span><span class="s0">| </span><span class="s1">44 years 8 mons 12 days </span><span class="s0">| </span><span class="s1">0                    </span><span class="s0">|</span>
+<span class="s0">| </span><span class="s1">37        </span><span class="s0">| </span><span class="s1">Everlyne   </span><span class="s0">| </span><span class="s1">NULL        </span><span class="s0">| </span><span class="s1">Maten'ge  </span><span class="s0">| </span><span class="s1">1973-02-27    </span><span class="s0">| </span><span class="s1">48 years 7 mons 9 days  </span><span class="s0">| </span><span class="s1">0                    </span><span class="s0">|</span>
+<span class="s0">| </span><span class="s1">38        </span><span class="s0">| </span><span class="s1">Barack     </span><span class="s0">| </span><span class="s1">NULL        </span><span class="s0">| </span><span class="s1">Obama     </span><span class="s0">| </span><span class="s1">1961-08-04    </span><span class="s0">| </span><span class="s1">60 years 2 mons 4 days  </span><span class="s0">| </span><span class="s1">0                    </span><span class="s0">|</span>
+<span class="s0">| </span><span class="s1">42        </span><span class="s0">| </span><span class="s1">Elizabeth  </span><span class="s0">| </span><span class="s1">NULL        </span><span class="s0">| </span><span class="s1">Mbaji     </span><span class="s0">| </span><span class="s1">1975-10-03    </span><span class="s0">| </span><span class="s1">46 years 5 days         </span><span class="s0">| </span><span class="s1">0                    </span><span class="s0">|</span>
+<span class="s0">| </span><span class="s1">36        </span><span class="s0">| </span><span class="s1">Hafsa      </span><span class="s0">| </span><span class="s1">Wangui      </span><span class="s0">| </span><span class="s1">Munga     </span><span class="s0">| </span><span class="s1">1987-05-07    </span><span class="s0">| </span><span class="s1">34 years 5 mons 1 day   </span><span class="s0">| </span><span class="s1">0                    </span><span class="s0">|</span>
+<span class="s0">| </span><span class="s1">44        </span><span class="s0">| </span><span class="s1">Merceline  </span><span class="s0">| </span><span class="s1">Lucy        </span><span class="s0">| </span><span class="s1">Njenga    </span><span class="s0">| </span><span class="s1">1982-04-21    </span><span class="s0">| </span><span class="s1">39 years 5 mons 17 days </span><span class="s0">| </span><span class="s1">0                    </span><span class="s0">|</span>
+<span class="s0">| </span><span class="s1">43        </span><span class="s0">| </span><span class="s1">Johny      </span><span class="s0">| </span><span class="s1">Paul        </span><span class="s0">| </span><span class="s1">Orengo    </span><span class="s0">| </span><span class="s1">1971-07-29    </span><span class="s0">| </span><span class="s1">50 years 2 mons 10 days </span><span class="s0">| </span><span class="s1">0                    </span><span class="s0">|</span>
+<span class="s0">| </span><span class="s1">35        </span><span class="s0">| </span><span class="s1">Paul       </span><span class="s0">| </span><span class="s1">NULL        </span><span class="s0">| </span><span class="s1">Pogba     </span><span class="s0">| </span><span class="s1">1993-03-15    </span><span class="s0">| </span><span class="s1">28 years 6 mons 24 days </span><span class="s0">| </span><span class="s1">0                    </span><span class="s0">|</span>
+
+<span class="s2">3. </span><span class="s3">-- Select the 100cc, 125cc and 150cc bikes from the vehicle table.</span>
+   <span class="s3">-- Add an engine_size column to the output </span><span class="s1">(</span><span class="s3">that contains the engine size</span><span class="s1">)</span><span class="s3">.</span>
+
+<span class="s0">```sql</span>
+<span class="s0">SELECT vehicle_id, make, model_name,</span>
+<span class="s0">CASE </span>
+    <span class="s0">WHEN LOWER(model_name) LIKE '%100cc%' THEN '100CC'</span>
+    <span class="s0">WHEN LOWER(model_name) LIKE '%125cc%' THEN '125CC'</span>
+    <span class="s0">WHEN LOWER(model_name) LIKE '%150cc%' THEN '150CC'</span>
+<span class="s0">END AS rating</span>
+<span class="s0">FROM public.vehicle</span>
+<span class="s0">```</span>
+<span class="s3">Output</span><span class="s1">:</span>
+
+<span class="s0">| </span><span class="s1">vehicle_id </span><span class="s0">| </span><span class="s1">make    </span><span class="s0">| </span><span class="s1">model_name      </span><span class="s0">| </span><span class="s1">rating </span><span class="s0">|</span>
+<span class="s0">|------------|---------|-----------------|--------|</span>
+<span class="s0">| </span><span class="s1">24         </span><span class="s0">| </span><span class="s1">Haojin  </span><span class="s0">| </span><span class="s1">HJ 150CC-11A    </span><span class="s0">| </span><span class="s1">150CC  </span><span class="s0">|</span>
+<span class="s0">| </span><span class="s1">26         </span><span class="s0">| </span><span class="s1">Honda   </span><span class="s0">| </span><span class="s1">Ace CB 125CC ES </span><span class="s0">| </span><span class="s1">125CC  </span><span class="s0">|</span>
+<span class="s0">| </span><span class="s1">27         </span><span class="s0">| </span><span class="s1">TVS     </span><span class="s0">| </span><span class="s1">HLX 125CC ES    </span><span class="s0">| </span><span class="s1">125CC  </span><span class="s0">|</span>
+<span class="s0">| </span><span class="s1">29         </span><span class="s0">| </span><span class="s1">TVS     </span><span class="s0">| </span><span class="s1">HLX 150CC X     </span><span class="s0">| </span><span class="s1">150CC  </span><span class="s0">|</span>
+<span class="s0">| </span><span class="s1">30         </span><span class="s0">| </span><span class="s1">TVS     </span><span class="s0">| </span><span class="s1">HLX 100CC KS    </span><span class="s0">| </span><span class="s1">100CC  </span><span class="s0">|</span>
+<span class="s0">| </span><span class="s1">31         </span><span class="s0">| </span><span class="s1">Haojin  </span><span class="s0">| </span><span class="s1">HJ 125CC-A      </span><span class="s0">| </span><span class="s1">125CC  </span><span class="s0">|</span>
+<span class="s0">| </span><span class="s1">32         </span><span class="s0">| </span><span class="s1">Boxer   </span><span class="s0">| </span><span class="s1">BM 150CC (4)    </span><span class="s0">| </span><span class="s1">150CC  </span><span class="s0">|</span>
+<span class="s0">| </span><span class="s1">33         </span><span class="s0">| </span><span class="s1">Ferrari </span><span class="s0">| </span><span class="s1">Enzo 6000CC     </span><span class="s0">| </span><span class="s1">NULL   </span><span class="s0">|</span>
+<span class="s0">| </span><span class="s1">34         </span><span class="s0">| </span><span class="s1">Boxer   </span><span class="s0">| </span><span class="s1">BM 150cc-2      </span><span class="s0">| </span><span class="s1">150CC  </span><span class="s0">|</span>
+<span class="s0">| </span><span class="s1">35         </span><span class="s0">| </span><span class="s1">Boxer   </span><span class="s0">| </span><span class="s1">BM 150cc-3      </span><span class="s0">| </span><span class="s1">150CC  </span><span class="s0">|</span>
+
+<span class="s2">4. </span><span class="s3">-- Calculate the total principal_amount per client full name </span><span class="s1">(</span><span class="s3">one column that includes all the names for each client</span><span class="s1">) </span><span class="s3">and per vehicle make.</span>
+
+<span class="s0">```sql</span>
+<span class="s0">SELECT </span>
+    <span class="s0">CONCAT(first_name, ' ',  middle_name, ' ', last_name) as full_name, vehicle.make as make, loan.principal_amount</span>
+<span class="s0">FROM client</span>
+<span class="s0">LEFT JOIN loan ON client.client_id = loan.client_id</span>
+<span class="s0">LEFT JOIN vehicle on loan.vehicle_id = vehicle.vehicle_id</span>
+<span class="s0">```</span>
+
+<span class="s3">Output</span><span class="s1">:</span>
+
+<span class="s0">| </span><span class="s1">full_name               </span><span class="s0">| </span><span class="s1">make </span><span class="s0">| </span><span class="s1">principal_amount </span><span class="s0">|</span>
+<span class="s0">|-------------------------|------|------------------|</span>
+<span class="s0">| </span><span class="s1">Prudence Salim Okeyo    </span><span class="s0">| </span><span class="s1">NULL </span><span class="s0">| </span><span class="s1">NULL             </span><span class="s0">|</span>
+<span class="s0">| </span><span class="s1">Susan Mapenzi Marigu    </span><span class="s0">| </span><span class="s1">NULL </span><span class="s0">| </span><span class="s1">NULL             </span><span class="s0">|</span>
+<span class="s0">| </span><span class="s1">Rosemary Pauline Kinyua </span><span class="s0">| </span><span class="s1">NULL </span><span class="s0">| </span><span class="s1">NULL             </span><span class="s0">|</span>
+<span class="s0">| </span><span class="s1">Everlyne  Maten'ge      </span><span class="s0">| </span><span class="s1">NULL </span><span class="s0">| </span><span class="s1">NULL             </span><span class="s0">|</span>
+<span class="s0">| </span><span class="s1">Barack  Obama           </span><span class="s0">| </span><span class="s1">NULL </span><span class="s0">| </span><span class="s1">NULL             </span><span class="s0">|</span>
+<span class="s0">| </span><span class="s1">Elizabeth  Mbaji        </span><span class="s0">| </span><span class="s1">NULL </span><span class="s0">| </span><span class="s1">NULL             </span><span class="s0">|</span>
+<span class="s0">| </span><span class="s1">Hafsa Wangui Munga      </span><span class="s0">| </span><span class="s1">NULL </span><span class="s0">| </span><span class="s1">NULL             </span><span class="s0">|</span>
+<span class="s0">| </span><span class="s1">Merceline Lucy Njenga   </span><span class="s0">| </span><span class="s1">NULL </span><span class="s0">| </span><span class="s1">NULL             </span><span class="s0">|</span>
+<span class="s0">| </span><span class="s1">Johny Paul Orengo       </span><span class="s0">| </span><span class="s1">NULL </span><span class="s0">| </span><span class="s1">NULL             </span><span class="s0">|</span>
+<span class="s0">| </span><span class="s1">Paul  Pogba             </span><span class="s0">| </span><span class="s1">NULL </span><span class="s0">| </span><span class="s1">NULL             </span><span class="s0">|</span>
+
+<span class="s2">6. </span><span class="s3">-- Select the loan table and add an extra column that shows the chronological loan order for each client based on the submitted_on_date column</span><span class="s1">: </span>
+   <span class="s3">-- 1 if it's the client</span><span class="s1">'</span><span class="s3">s first sale, 2 if it's the client</span><span class="s1">'</span><span class="s3">s second sale etc.</span>
+   <span class="s3">-- Call it loan_order</span>
+
+<span class="s0">```sql</span>
+<span class="s0">WITH client AS </span>
+<span class="s0">(</span>
+    <span class="s0">SELECT loan_id, client_id, vehicle_id, principal_amount, submitted_on_date</span>
+    <span class="s0">FROM    loan</span>
+    <span class="s0">ORDER BY client_id, submitted_on_date</span>
+<span class="s0">)</span>
+<span class="s0">SELECT loan_id, client_id, vehicle_id, principal_amount, submitted_on_date, ROW_NUMBER () OVER (partition BY client_id) as loan_order</span>
+<span class="s0">FROM client</span>
+<span class="s0">```</span>
+
+<span class="s3">Output</span><span class="s1">:</span>
+
+<span class="s0">| </span><span class="s1">loan_id </span><span class="s0">| </span><span class="s1">client_id </span><span class="s0">| </span><span class="s1">vehicle_id </span><span class="s0">| </span><span class="s1">principal_amount </span><span class="s0">| </span><span class="s1">submitted_on_date </span><span class="s0">| </span><span class="s1">loan_order </span><span class="s0">|</span>
+<span class="s0">|---------|-----------|------------|------------------|-------------------|------------|</span>
+<span class="s0">| </span><span class="s1">75660   </span><span class="s0">| </span><span class="s1">40737     </span><span class="s0">| </span><span class="s1">30         </span><span class="s0">| </span><span class="s1">95300            </span><span class="s0">| </span><span class="s1">02/05/2019        </span><span class="s0">| </span><span class="s1">1          </span><span class="s0">|</span>
+<span class="s0">| </span><span class="s1">75659   </span><span class="s0">| </span><span class="s1">40760     </span><span class="s0">| </span><span class="s1">26         </span><span class="s0">| </span><span class="s1">108400           </span><span class="s0">| </span><span class="s1">05/12/2020        </span><span class="s0">| </span><span class="s1">1          </span><span class="s0">|</span>
+<span class="s0">| </span><span class="s1">75676   </span><span class="s0">| </span><span class="s1">40784     </span><span class="s0">| </span><span class="s1">24         </span><span class="s0">| </span><span class="s1">106500           </span><span class="s0">| </span><span class="s1">02/05/2019        </span><span class="s0">| </span><span class="s1">1          </span><span class="s0">|</span>
+<span class="s0">| </span><span class="s1">75657   </span><span class="s0">| </span><span class="s1">40796     </span><span class="s0">| </span><span class="s1">28         </span><span class="s0">| </span><span class="s1">271482           </span><span class="s0">| </span><span class="s1">21/06/2019        </span><span class="s0">| </span><span class="s1">1          </span><span class="s0">|</span>
+<span class="s0">| </span><span class="s1">75662   </span><span class="s0">| </span><span class="s1">40803     </span><span class="s0">| </span><span class="s1">29         </span><span class="s0">| </span><span class="s1">114400           </span><span class="s0">| </span><span class="s1">02/05/2019        </span><span class="s0">| </span><span class="s1">1          </span><span class="s0">|</span>
+<span class="s0">| </span><span class="s1">75685   </span><span class="s0">| </span><span class="s1">40807     </span><span class="s0">| </span><span class="s1">27         </span><span class="s0">| </span><span class="s1">101500           </span><span class="s0">| </span><span class="s1">02/05/2019        </span><span class="s0">| </span><span class="s1">1          </span><span class="s0">|</span>
+<span class="s0">| </span><span class="s1">75658   </span><span class="s0">| </span><span class="s1">40811     </span><span class="s0">| </span><span class="s1">33         </span><span class="s0">| </span><span class="s1">107050           </span><span class="s0">| </span><span class="s1">02/05/2019        </span><span class="s0">| </span><span class="s1">1          </span><span class="s0">|</span>
+<span class="s0">| </span><span class="s1">75656   </span><span class="s0">| </span><span class="s1">40815     </span><span class="s0">| </span><span class="s1">31         </span><span class="s0">| </span><span class="s1">78500            </span><span class="s0">| </span><span class="s1">02/05/2019        </span><span class="s0">| </span><span class="s1">1          </span><span class="s0">|</span>
+<span class="s0">| </span><span class="s1">75666   </span><span class="s0">| </span><span class="s1">40834     </span><span class="s0">| </span><span class="s1">32         </span><span class="s0">| </span><span class="s1">111800           </span><span class="s0">| </span><span class="s1">02/05/2019        </span><span class="s0">| </span><span class="s1">1          </span><span class="s0">|</span>
+<span class="s0">| </span><span class="s1">75663   </span><span class="s0">| </span><span class="s1">40840     </span><span class="s0">| </span><span class="s1">34         </span><span class="s0">| </span><span class="s1">101800           </span><span class="s0">| </span><span class="s1">02/05/2019        </span><span class="s0">| </span><span class="s1">1          </span><span class="s0">|</span></pre>
+</body>
+</html>
