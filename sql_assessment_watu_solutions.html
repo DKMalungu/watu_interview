@@ -72,6 +72,8 @@ sql_assessment_watu_solutions.md</font>
 <span class="s0">--------------------------------------------------------------------------------</span>
 <span class="s3">-- QUESTIONS</span>
 <span class="s2">--------------------------------------------------------------------------------</span>
+<span class="s3">Note</span><span class="s1">:</span>
+<span class="s3">The SQL code below is write with respect to PostgreSQL syntax and keywords.</span>
 
 <span class="s3">Using the tables above, please write the SQL code that would answer each of the following questions </span><span class="s1">(</span><span class="s3">write the code below each of them</span><span class="s1">)</span><span class="s3">.</span>
 
@@ -79,13 +81,17 @@ sql_assessment_watu_solutions.md</font>
    <span class="s3">-- In the results, create a column with the client's age in years. </span>
    <span class="s3">-- Order them from older to younger.</span>
 <span class="s0">```sql</span>
+<span class="s0">-- Defining a sub query block with the name client_age</span>
 <span class="s0">WITH client_age AS </span>
-<span class="s0">(</span>
+<span class="s0">( </span>
+    <span class="s0">-- age(CURRENT_DATE, date_of_birth) AS age Calculating age using PostgreSQl age function that will return Years, Month, Date with the alias age</span>
+    <span class="s0">-- EXTRACT(year FROM age(CURRENT_DATE, date_of_birth)) as age_2 getting the year part from age function with the alias age_2</span>
     <span class="s0">SELECT client_id, first_name, middle_name, last_name, date_of_birth, age(CURRENT_DATE, date_of_birth) AS age, </span>
         <span class="s0">EXTRACT(year FROM age(CURRENT_DATE, date_of_birth)) as age_2 </span>
     <span class="s0">FROM client </span>
     <span class="s0">ORDER BY age DESC</span>
 <span class="s0">)</span>
+<span class="s0">-- using the sub querry to create the table and apply the condition (either first name or last name be paul while they are 25 years)</span>
 <span class="s0">SELECT client_id, first_name, middle_name, last_name, date_of_birth, age </span>
 <span class="s0">FROM client_age</span>
 <span class="s0">WHERE LOWER(first_name) = 'paul' AND  age_2 &gt; 25  or LOWER(middle_name) = 'paul' AND  age_2 &gt; 25     </span>
@@ -112,14 +118,19 @@ sql_assessment_watu_solutions.md</font>
 
 <span class="s3">Table with Condition Apply</span>
 <span class="s0">```sql</span>
+<span class="s0">-- Defining a sub query block with the name client_age</span>
 <span class="s0">WITH client_age AS </span>
 <span class="s0">(</span>
+    <span class="s0">-- age(CURRENT_DATE, date_of_birth) AS age Calculating age using PostgreSQl age function that will return Years, Month, Date with the alias age</span>
+    <span class="s0">-- EXTRACT(year FROM age(CURRENT_DATE, date_of_birth)) as age_2 getting the year part from age function with the alias age_2</span>
     <span class="s0">SELECT client_id, first_name, middle_name, last_name, date_of_birth, age(CURRENT_DATE, date_of_birth) AS age, </span>
         <span class="s0">EXTRACT(year FROM age(CURRENT_DATE, date_of_birth)) as age_2 </span>
     <span class="s0">FROM client</span>
     <span class="s0">ORDER BY age DESC</span>
 <span class="s0">)</span>
-<span class="s0">SELECT client_age.client_id, client_age.first_name, client_age.middle_name, client_age.last_name, client_age.date_of_birth, client_age.age, COALESCE(loan.principal_amount, 0) as new_principal_amount</span>
+<span class="s0">SELECT client_age.client_id, client_age.first_name, client_age.middle_name, client_age.last_name, client_age.date_of_birth, client_age.age, </span>
+       <span class="s0">--COLAESCE function to substitute a default value for null values when we querying the data.</span>
+       <span class="s0">COALESCE(loan.principal_amount, 0) as new_principal_amount</span>
 <span class="s0">FROM client_age </span>
 <span class="s0">LEFT JOIN public.loan as loan on client_age.client_id = loan.client_id</span>
 <span class="s0">WHERE LOWER(client_age.first_name) = 'paul' AND  client_age.age_2 &gt; 25  or LOWER(client_age.middle_name) = 'paul' AND  client_age.age_2 &gt; 25;</span>
@@ -134,14 +145,19 @@ sql_assessment_watu_solutions.md</font>
 
 <span class="s3">Table without condition applied</span>
 <span class="s0">```sql</span>
+<span class="s0">-- Defining a sub query block with the name client_age</span>
 <span class="s0">WITH client_age AS </span>
 <span class="s0">(</span>
+    <span class="s0">-- age(CURRENT_DATE, date_of_birth) AS age Calculating age using PostgreSQl age function that will return Years, Month, Date with the alias age</span>
+    <span class="s0">-- EXTRACT(year FROM age(CURRENT_DATE, date_of_birth)) as age_2 getting the year part from age function with the alias age_2</span>
     <span class="s0">SELECT client_id, first_name, middle_name, last_name, date_of_birth, age(CURRENT_DATE, date_of_birth) AS age, </span>
         <span class="s0">EXTRACT(year FROM age(CURRENT_DATE, date_of_birth)) as age_2 </span>
     <span class="s0">FROM client</span>
     <span class="s0">ORDER BY age DESC</span>
 <span class="s0">)</span>
-<span class="s0">SELECT client_age.client_id, client_age.first_name, client_age.middle_name, client_age.last_name, client_age.date_of_birth, client_age.age, COALESCE(loan.principal_amount, 0) as new_principal_amount</span>
+<span class="s0">SELECT client_age.client_id, client_age.first_name, client_age.middle_name, client_age.last_name, client_age.date_of_birth, client_age.age, </span>
+       <span class="s0">--COLAESCE function to substitute a default value for null values when we querying the data.</span>
+       <span class="s0">COALESCE(loan.principal_amount, 0) as new_principal_amount</span>
 <span class="s0">FROM client_age </span>
 <span class="s0">LEFT JOIN public.loan as loan on client_age.client_id = loan.client_id;</span>
 <span class="s0">```</span>
@@ -166,7 +182,9 @@ sql_assessment_watu_solutions.md</font>
 
 <span class="s0">```sql</span>
 <span class="s0">SELECT vehicle_id, make, model_name,</span>
+<span class="s0">-- Using case function to look for 100cc, 125cc and 150cc in model string</span>
 <span class="s0">CASE </span>
+    <span class="s0">-- converting the string to lower case to increase accuracy of detection</span>
     <span class="s0">WHEN LOWER(model_name) LIKE '%100cc%' THEN '100CC'</span>
     <span class="s0">WHEN LOWER(model_name) LIKE '%125cc%' THEN '125CC'</span>
     <span class="s0">WHEN LOWER(model_name) LIKE '%150cc%' THEN '150CC'</span>
@@ -192,9 +210,12 @@ sql_assessment_watu_solutions.md</font>
 
 <span class="s0">```sql</span>
 <span class="s0">SELECT </span>
+    <span class="s0">-- using concat function to join first_name, middle_name and last_name with alias full name</span>
     <span class="s0">CONCAT(first_name, ' ',  middle_name, ' ', last_name) as full_name, vehicle.make as make, loan.principal_amount</span>
 <span class="s0">FROM client</span>
+<span class="s0">-- creating first left join between loan table and client table on the column client_id</span>
 <span class="s0">LEFT JOIN loan ON client.client_id = loan.client_id</span>
+<span class="s0">-- creating second left join between vehicle and loan on the column vehicle id </span>
 <span class="s0">LEFT JOIN vehicle on loan.vehicle_id = vehicle.vehicle_id</span>
 <span class="s0">```</span>
 
@@ -213,17 +234,21 @@ sql_assessment_watu_solutions.md</font>
 <span class="s0">| </span><span class="s1">Johny Paul Orengo       </span><span class="s0">| </span><span class="s1">NULL </span><span class="s0">| </span><span class="s1">NULL             </span><span class="s0">|</span>
 <span class="s0">| </span><span class="s1">Paul  Pogba             </span><span class="s0">| </span><span class="s1">NULL </span><span class="s0">| </span><span class="s1">NULL             </span><span class="s0">|</span>
 
-<span class="s2">6. </span><span class="s3">-- Select the loan table and add an extra column that shows the chronological loan order for each client based on the submitted_on_date column</span><span class="s1">: </span>
+<span class="s2">5. </span><span class="s3">-- Select the loan table and add an extra column that shows the chronological loan order for each client based on the submitted_on_date column</span><span class="s1">: </span>
    <span class="s3">-- 1 if it's the client</span><span class="s1">'</span><span class="s3">s first sale, 2 if it's the client</span><span class="s1">'</span><span class="s3">s second sale etc.</span>
    <span class="s3">-- Call it loan_order</span>
 
 <span class="s0">```sql</span>
+<span class="s0">-- Defining a sub query block with the name client</span>
 <span class="s0">WITH client AS </span>
 <span class="s0">(</span>
+    <span class="s0">-- ordering table in respect of client_id and submitted_on_date</span>
     <span class="s0">SELECT loan_id, client_id, vehicle_id, principal_amount, submitted_on_date</span>
     <span class="s0">FROM    loan</span>
     <span class="s0">ORDER BY client_id, submitted_on_date</span>
 <span class="s0">)</span>
+<span class="s0">-- row_number function add number over a given column</span>
+<span class="s0">-- partition by divides the data in respect to client id</span>
 <span class="s0">SELECT loan_id, client_id, vehicle_id, principal_amount, submitted_on_date, ROW_NUMBER () OVER (partition BY client_id) as loan_order</span>
 <span class="s0">FROM client</span>
 <span class="s0">```</span>
