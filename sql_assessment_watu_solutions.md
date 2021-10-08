@@ -64,13 +64,17 @@ Using the tables above, please write the SQL code that would answer each of the 
    -- In the results, create a column with the client's age in years. 
    -- Order them from older to younger.
 ```sql
+-- Defining a sub query block with the name client_age
 WITH client_age AS 
-(
+( 
+    -- age(CURRENT_DATE, date_of_birth) AS age Calculating age using PostgreSQl age function that will return Years, Month, Date with the alias age
+    -- EXTRACT(year FROM age(CURRENT_DATE, date_of_birth)) as age_2 getting the year part from age function with the alias age_2
     SELECT client_id, first_name, middle_name, last_name, date_of_birth, age(CURRENT_DATE, date_of_birth) AS age, 
         EXTRACT(year FROM age(CURRENT_DATE, date_of_birth)) as age_2 
     FROM client 
     ORDER BY age DESC
 )
+-- using the sub querry to create the table and apply the condition (either first name or last name be paul while they are 25 years)
 SELECT client_id, first_name, middle_name, last_name, date_of_birth, age 
 FROM client_age
 WHERE LOWER(first_name) = 'paul' AND  age_2 > 25  or LOWER(middle_name) = 'paul' AND  age_2 > 25     
@@ -97,14 +101,19 @@ The two implementations are provided below:-
 
 Table with Condition Apply
 ```sql
+-- Defining a sub query block with the name client_age
 WITH client_age AS 
 (
+    -- age(CURRENT_DATE, date_of_birth) AS age Calculating age using PostgreSQl age function that will return Years, Month, Date with the alias age
+    -- EXTRACT(year FROM age(CURRENT_DATE, date_of_birth)) as age_2 getting the year part from age function with the alias age_2
     SELECT client_id, first_name, middle_name, last_name, date_of_birth, age(CURRENT_DATE, date_of_birth) AS age, 
         EXTRACT(year FROM age(CURRENT_DATE, date_of_birth)) as age_2 
     FROM client
     ORDER BY age DESC
 )
-SELECT client_age.client_id, client_age.first_name, client_age.middle_name, client_age.last_name, client_age.date_of_birth, client_age.age, COALESCE(loan.principal_amount, 0) as new_principal_amount
+SELECT client_age.client_id, client_age.first_name, client_age.middle_name, client_age.last_name, client_age.date_of_birth, client_age.age, 
+       --COLAESCE function to substitute a default value for null values when we querying the data.
+       COALESCE(loan.principal_amount, 0) as new_principal_amount
 FROM client_age 
 LEFT JOIN public.loan as loan on client_age.client_id = loan.client_id
 WHERE LOWER(client_age.first_name) = 'paul' AND  client_age.age_2 > 25  or LOWER(client_age.middle_name) = 'paul' AND  client_age.age_2 > 25;
@@ -119,14 +128,19 @@ Output:
 
 Table without condition applied
 ```sql
+-- Defining a sub query block with the name client_age
 WITH client_age AS 
 (
+    -- age(CURRENT_DATE, date_of_birth) AS age Calculating age using PostgreSQl age function that will return Years, Month, Date with the alias age
+    -- EXTRACT(year FROM age(CURRENT_DATE, date_of_birth)) as age_2 getting the year part from age function with the alias age_2
     SELECT client_id, first_name, middle_name, last_name, date_of_birth, age(CURRENT_DATE, date_of_birth) AS age, 
         EXTRACT(year FROM age(CURRENT_DATE, date_of_birth)) as age_2 
     FROM client
     ORDER BY age DESC
 )
-SELECT client_age.client_id, client_age.first_name, client_age.middle_name, client_age.last_name, client_age.date_of_birth, client_age.age, COALESCE(loan.principal_amount, 0) as new_principal_amount
+SELECT client_age.client_id, client_age.first_name, client_age.middle_name, client_age.last_name, client_age.date_of_birth, client_age.age, 
+       --COLAESCE function to substitute a default value for null values when we querying the data.
+       COALESCE(loan.principal_amount, 0) as new_principal_amount
 FROM client_age 
 LEFT JOIN public.loan as loan on client_age.client_id = loan.client_id;
 ```
@@ -151,7 +165,9 @@ Output:
 
 ```sql
 SELECT vehicle_id, make, model_name,
+-- Using case function to look for 100cc, 125cc and 150cc in model string
 CASE 
+    -- converting the string to lower case to increase accuracy of detection
     WHEN LOWER(model_name) LIKE '%100cc%' THEN '100CC'
     WHEN LOWER(model_name) LIKE '%125cc%' THEN '125CC'
     WHEN LOWER(model_name) LIKE '%150cc%' THEN '150CC'
@@ -177,9 +193,12 @@ Output:
 
 ```sql
 SELECT 
+    -- using concat function to join first_name, middle_name and last_name with alias full name
     CONCAT(first_name, ' ',  middle_name, ' ', last_name) as full_name, vehicle.make as make, loan.principal_amount
 FROM client
+-- creating first left join between loan table and client table on the column client_id
 LEFT JOIN loan ON client.client_id = loan.client_id
+-- creating second left join between vehicle and loan on the column vehicle id 
 LEFT JOIN vehicle on loan.vehicle_id = vehicle.vehicle_id
 ```
 
@@ -198,17 +217,21 @@ Output:
 | Johny Paul Orengo       | NULL | NULL             |
 | Paul  Pogba             | NULL | NULL             |
 
-6. -- Select the loan table and add an extra column that shows the chronological loan order for each client based on the submitted_on_date column: 
+5. -- Select the loan table and add an extra column that shows the chronological loan order for each client based on the submitted_on_date column: 
    -- 1 if it's the client's first sale, 2 if it's the client's second sale etc.
    -- Call it loan_order
 
 ```sql
+-- Defining a sub query block with the name client
 WITH client AS 
 (
+    -- ordering table in respect of client_id and submitted_on_date
     SELECT loan_id, client_id, vehicle_id, principal_amount, submitted_on_date
     FROM    loan
     ORDER BY client_id, submitted_on_date
 )
+-- row_number function add number over a given column
+-- partition by divides the data in respect to client id
 SELECT loan_id, client_id, vehicle_id, principal_amount, submitted_on_date, ROW_NUMBER () OVER (partition BY client_id) as loan_order
 FROM client
 ```
