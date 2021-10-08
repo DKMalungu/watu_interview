@@ -55,6 +55,8 @@ NOTE: these are just extracts from bigger tables, to show their structure
 --------------------------------------------------------------------------------
 -- QUESTIONS
 --------------------------------------------------------------------------------
+Note:
+The SQL code below is write with respect to PostgreSQL syntax and keywords.
 
 Using the tables above, please write the SQL code that would answer each of the following questions (write the code below each of them).
 
