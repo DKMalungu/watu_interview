@@ -107,6 +107,13 @@ FROM client_age
 LEFT JOIN public.loan as loan on client_age.client_id = loan.client_id
 WHERE LOWER(client_age.first_name) = 'paul' AND  client_age.age_2 > 25  or LOWER(client_age.middle_name) = 'paul' AND  client_age.age_2 > 25;
 ```
+Output:
+
+| client_id | first_name | middle_name | last_name | date_of_birth | age                     | new_principal_amount |
+|-----------|------------|-------------|-----------|---------------|-------------------------|----------------------|
+| 43        | Johny      | Paul        | Orengo    | 1971-07-29    | 50 years 2 mons 10 days | 0                    |
+| 35        | Paul       | NULL        | Pogba     | 1993-03-15    | 28 years 6 mons 24 days | 0                    |
+
 
 2. Table without condition applied
 ```sql
@@ -121,6 +128,21 @@ SELECT client_age.client_id, client_age.first_name, client_age.middle_name, clie
 FROM client_age 
 LEFT JOIN public.loan as loan on client_age.client_id = loan.client_id;
 ```
+
+Output:
+
+| client_id | first_name | middle_name | last_name | date_of_birth | age                     | new_principal_amount |
+|-----------|------------|-------------|-----------|---------------|-------------------------|----------------------|
+| 39        | Prudence   | Salim       | Okeyo     | 1985-02-16    | 36 years 7 mons 20 days | 0                    |
+| 33        | Susan      | Mapenzi     | Marigu    | 1974-06-11    | 47 years 3 mons 27 days | 0                    |
+| 40        | Rosemary   | Pauline     | Kinyua    | 1977-01-27    | 44 years 8 mons 12 days | 0                    |
+| 37        | Everlyne   | NULL        | Maten'ge  | 1973-02-27    | 48 years 7 mons 9 days  | 0                    |
+| 38        | Barack     | NULL        | Obama     | 1961-08-04    | 60 years 2 mons 4 days  | 0                    |
+| 42        | Elizabeth  | NULL        | Mbaji     | 1975-10-03    | 46 years 5 days         | 0                    |
+| 36        | Hafsa      | Wangui      | Munga     | 1987-05-07    | 34 years 5 mons 1 day   | 0                    |
+| 44        | Merceline  | Lucy        | Njenga    | 1982-04-21    | 39 years 5 mons 17 days | 0                    |
+| 43        | Johny      | Paul        | Orengo    | 1971-07-29    | 50 years 2 mons 10 days | 0                    |
+| 35        | Paul       | NULL        | Pogba     | 1993-03-15    | 28 years 6 mons 24 days | 0                    |
 
 4. -- Select the 100cc, 125cc and 150cc bikes from the vehicle table.
    -- Add an engine_size column to the output (that contains the engine size).
